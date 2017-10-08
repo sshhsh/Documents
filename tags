@@ -1,0 +1,118 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Abstract	latex/clean-latex-template/frontmatter/abstract_en.tex	/^\\selectlanguage{english}$/;"	c
+Conclusion	latex/clean-latex-template/conclusion/conclusion.tex	/^\\begin{document}$/;"	c
+Deuxi   me section	latex/clean-latex-template/chap1/codesandlistes.tex	/^\\section{Deuxième section}%$/;"	s
+Deuxi   me section	latex/clean-latex-template/chap2/paragraphanddivers.tex	/^\\section{Deuxième section}%$/;"	s
+Enumerate	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\end{itemize}$/;"	b
+Exemples	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{2}$/;"	u
+Exemples de code source	latex/clean-latex-template/chap1/codesandlistes/codesources.tex	/^\\subsection{Exemples de code source}%$/;"	u
+Figure simple	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\subsection{Sous section présentant les figures}$/;"	b
+Fonction de Laplace	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{3}$/;"	s
+Fonction de transfert	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{1}$/;"	s
+H Infiny	latex/clean-latex-template/appendixB/appendixB.tex	/^}$/;"	c
+Introduction	latex/clean-latex-template/introduction/introduction.tex	/^\\begin{document}$/;"	c
+Itemize	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\subsection{Sous section présentant les listes}$/;"	b
+Keywords	latex/clean-latex-template/frontmatter/abstract_en.tex	/^Insérez ici le résumé en anglais\\\\[2em]$/;"	u
+Les notes de bas de page	latex/clean-latex-template/chap2/paragraphanddivers/divers.tex	/^\\subsection{Sous section présentant divers choses utiles}$/;"	P
+MAINDIRECTORY	latex/clean-latex-template/Makefile	/^MAINDIRECTORY := $(shell pwd)$/;"	m
+Mathematics	latex/clean-latex-template/appendixA/appendixA.tex	/^}$/;"	c
+Mots Clefs libres	latex/clean-latex-template/frontmatter/abstract_fr.tex	/^Insérez ici le résumé en français\\\\[2em]$/;"	u
+Nested Lists	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\end{enumerate}$/;"	b
+PDFVIEWER	latex/clean-latex-template/Makefile	/^PDFVIEWER = evince$/;"	m
+PDFVIEWER	latex/clean-latex-template/Makefile	/^PDFVIEWER = open$/;"	m
+ParseState	gfw_whitelist/mainproxy.py	/^	class ParseState(object):$/;"	c	function:js_shorter
+R   f   rences aux   quations  figures  et tables	latex/clean-latex-template/chap2/tableandreferences/references.tex	/^Multiples références bibliographiques en une seule commande~\\cite{Petkov2005,Raman2009,Colinet2004}.$/;"	b
+R   f   rences bibliographique	latex/clean-latex-template/chap2/tableandreferences/references.tex	/^\\subsection{Sous section présentant les Références}$/;"	b
+R   sum   du rapport	latex/clean-latex-template/frontmatter/abstract_fr.tex	/^\\selectlanguage{french}$/;"	c
+Remerciements	latex/clean-latex-template/frontmatter/remerciements.tex	/^\\chapter*{Remerciements}%$/;"	c
+Section pour pr   senter les tableaux et r   f   rences	latex/clean-latex-template/chap2/tableandreferences.tex	/^\\section{Section pour présenter les tableaux et références}%$/;"	s
+Sous section avec des   quations	latex/clean-latex-template/chap1/eqandfigures/equations.tex	/^\\subsection{Sous section avec des équations}%$/;"	u
+Sous section avec des tableaux	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\subsection{Sous section avec des tableaux}%$/;"	u
+Sous section pr   sentant divers choses utiles	latex/clean-latex-template/chap2/paragraphanddivers/divers.tex	/^\\subsection{Sous section présentant divers choses utiles}$/;"	u
+Sous section pr   sentant les R   f   rences	latex/clean-latex-template/chap2/tableandreferences/references.tex	/^\\subsection{Sous section présentant les Références}$/;"	u
+Sous section pr   sentant les figures	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\subsection{Sous section présentant les figures}$/;"	u
+Sous section pr   sentant les listes	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\subsection{Sous section présentant les listes}$/;"	u
+Sous sous section avec une   quation	latex/clean-latex-template/chap1/eqandfigures/equations.tex	/^\\label{sec:subsectionlabel}$/;"	b
+Sous sous section non num   rot   e	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\label{ssec:sectionandparagraphs}$/;"	b
+Sous-figures	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\end{figure}$/;"	b
+Sous-sous sections et paragraphes	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\subsection{Sous-sous sections et paragraphes}%$/;"	u
+Tableau plus complexe	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\end{table}$/;"	b
+Tableau simple	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\label{sec:subsectiontableau}$/;"	b
+Th   orie	latex/clean-latex-template/appendixA/appendixA.tex	/^\\section{Fonction de transfert}$/;"	u
+Titre de la section	latex/clean-latex-template/chap1/eqandfigures.tex	/^\\section{Titre de la section}%$/;"	s
+Titre du chapitre	latex/clean-latex-template/chap1/chap1.tex	/^}$/;"	c
+Titre du chapitre	latex/clean-latex-template/snippets/subfile.tex	/^}$/;"	c
+Titre du deuxi   me chapitre un peu plus long	latex/clean-latex-template/chap2/chap2.tex	/^}$/;"	c
+Titre du paragraph	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\blindtext[8]$/;"	P
+UNAME	latex/clean-latex-template/Makefile	/^UNAME := $(shell uname)$/;"	m
+__all__	gfw_whitelist/list_black.py	/^__all__ = ['main']$/;"	v
+__all__	gfw_whitelist/list_gfw.py	/^__all__ = ['main']$/;"	v
+__init__	gfw_whitelist/mainproxy.py	/^		def __init__(self):$/;"	m	class:js_shorter.ParseState
+add_domain_to_set	gfw_whitelist/list_black.py	/^def add_domain_to_set(s, something):$/;"	f
+begin_test	gfw_whitelist/test.js	/^function begin_test() {$/;"	f
+bibliographyname	latex/clean-latex-template/configuration/bibliography.tex	/^\\defbibheading{bibliography}[\\refname]{% Custom Heading for the bibliography$/;"	c
+center_list	gfw_whitelist/list_ip.py	/^def center_list():$/;"	f
+decode_gfwlist	gfw_whitelist/list_black.py	/^def decode_gfwlist(content):$/;"	f
+decode_gfwlist	gfw_whitelist/list_gfw.py	/^def decode_gfwlist(content):$/;"	f
+dnsResolve	gfw_whitelist/test.js	/^function dnsResolve(host) {$/;"	f
+dnsResolveEx	gfw_whitelist/test.js	/^function dnsResolveEx(host) {$/;"	f
+fakeIpList	gfw_whitelist/list_ip.py	/^fakeIpList = [$/;"	v
+fake_list	gfw_whitelist/list_ip.py	/^def fake_list():$/;"	f
+final_list	gfw_whitelist/list_black.py	/^def final_list():$/;"	f
+final_list	gfw_whitelist/list_gfw.py	/^def final_list():$/;"	f
+final_list	gfw_whitelist/list_ip.py	/^def final_list():$/;"	f
+final_list	gfw_whitelist/list_white.py	/^def final_list():$/;"	f
+get_all_list	gfw_whitelist/list_black.py	/^def get_all_list(lists):$/;"	f
+get_all_list	gfw_whitelist/list_gfw.py	/^def get_all_list(lists):$/;"	f
+get_all_list	gfw_whitelist/list_white.py	/^def get_all_list(lists):$/;"	f
+get_default_param	gfw_whitelist/mainproxy.py	/^def get_default_param(param, defstring, defval):$/;"	f
+get_file_data	gfw_whitelist/main.py	/^def get_file_data(filename):$/;"	f
+get_file_data	gfw_whitelist/mainproxy.py	/^def get_file_data(filename):$/;"	f
+get_hostname	gfw_whitelist/list_black.py	/^def get_hostname(something):$/;"	f
+get_hostname	gfw_whitelist/list_gfw.py	/^def get_hostname(something):$/;"	f
+get_list_set	gfw_whitelist/lists/__init__.py	/^def get_list_set():$/;"	f
+get_pac_result	gfw_whitelist/pactest.py	/^def get_pac_result(filename, url, host):$/;"	f
+getfile	gfw_whitelist/blacklist/tld.py	/^def getfile(pathlist):$/;"	f
+getlist	gfw_whitelist/blacklist/ban.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/blacklist/builtin.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/blacklist/custom.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/blacklist/gfwcustom.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/blacklist/tld.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/lists/auto.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/lists/custom.py	/^def getlist():$/;"	f
+getlist	gfw_whitelist/lists/pop.py	/^def getlist():$/;"	f
+ip2int	gfw_whitelist/list_ip.py	/^def ip2int(ipstr):$/;"	f
+isInNet	gfw_whitelist/test.js	/^function isInNet(ip, ipstart, ipmask) {$/;"	f
+isPlainHostName	gfw_whitelist/test.js	/^function isPlainHostName(host) {$/;"	f
+js_shorter	gfw_whitelist/mainproxy.py	/^def js_shorter(content):$/;"	f
+main	gfw_whitelist/list_ip.py	/^def main():$/;"	f
+main	gfw_whitelist/main.py	/^def main():$/;"	f
+main	gfw_whitelist/mainproxy.py	/^def main():$/;"	f
+main	gfw_whitelist/pactest.py	/^def main():$/;"	f
+main_test	gfw_whitelist/pactest.py	/^def main_test(filename, test_times):$/;"	f
+next	gfw_whitelist/mainproxy.py	/^		def next(self, ch):$/;"	m	class:js_shorter.ParseState
+obfs	gfw_whitelist/list_black.py	/^def obfs(url):$/;"	f
+obfs	gfw_whitelist/list_gfw.py	/^def obfs(url):$/;"	f
+obfs_list	gfw_whitelist/list_black.py	/^def obfs_list(list_result):$/;"	f
+obfs_list	gfw_whitelist/list_gfw.py	/^def obfs_list(list_result):$/;"	f
+output_result	gfw_whitelist/test.js	/^function output_result(out_obj) {$/;"	f
+parse_args	gfw_whitelist/main.py	/^def parse_args():$/;"	f
+parse_args	gfw_whitelist/mainproxy.py	/^def parse_args():$/;"	f
+parse_gfwlist	gfw_whitelist/list_black.py	/^def parse_gfwlist(content):$/;"	f
+parse_gfwlist	gfw_whitelist/list_gfw.py	/^def parse_gfwlist(content):$/;"	f
+r	gfw_whitelist/mainproxy.py	/^		r = prase.next(c)$/;"	v	class:js_shorter.ParseState
+reduce_domains	gfw_whitelist/list_black.py	/^def reduce_domains(domains):$/;"	f
+retbuf	gfw_whitelist/mainproxy.py	/^		def retbuf(self):$/;"	m	class:js_shorter.ParseState
+shExpMatch	gfw_whitelist/test.js	/^function shExpMatch(a, b) {$/;"	f
+test	gfw_whitelist/test.js	/^function test(url, host) {$/;"	f
+test_cases	gfw_whitelist/test.js	/^var test_cases = [$/;"	v
+test_one	gfw_whitelist/test.js	/^function test_one() {$/;"	f
+time_test	gfw_whitelist/pactest.py	/^def time_test():$/;"	f
+writefile	gfw_whitelist/main.py	/^def writefile(input_file, proxy, output_file):$/;"	f
+writefile	gfw_whitelist/mainproxy.py	/^def writefile(input_file, proxy, auto_proxy, ip_proxy, output_file, dynamic):$/;"	f
+x	latex/clean-latex-template/ressources/code/hello-world.py	/^x = 1$/;"	v
