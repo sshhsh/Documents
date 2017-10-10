@@ -15,12 +15,14 @@ Figure simple	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\subs
 Fonction de Laplace	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{3}$/;"	s
 Fonction de transfert	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{1}$/;"	s
 H Infiny	latex/clean-latex-template/appendixB/appendixB.tex	/^}$/;"	c
+Introduction	latex/NoTeX/doc/NotesTeX.tex	/^	\\pagestyle{fancynotes}$/;"	p
 Introduction	latex/clean-latex-template/introduction/introduction.tex	/^\\begin{document}$/;"	c
 Itemize	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\subsection{Sous section présentant les listes}$/;"	b
 Keywords	latex/clean-latex-template/frontmatter/abstract_en.tex	/^Insérez ici le résumé en anglais\\\\[2em]$/;"	u
 Les notes de bas de page	latex/clean-latex-template/chap2/paragraphanddivers/divers.tex	/^\\subsection{Sous section présentant divers choses utiles}$/;"	P
 MAINDIRECTORY	latex/clean-latex-template/Makefile	/^MAINDIRECTORY := $(shell pwd)$/;"	m
 Mathematics	latex/clean-latex-template/appendixA/appendixA.tex	/^}$/;"	c
+Motivation	latex/NoTeX/doc/NotesTeX.tex	/^	\\part{Introduction}	$/;"	s
 Mots Clefs libres	latex/clean-latex-template/frontmatter/abstract_fr.tex	/^Insérez ici le résumé en français\\\\[2em]$/;"	u
 Nested Lists	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\end{enumerate}$/;"	b
 PDFVIEWER	latex/clean-latex-template/Makefile	/^PDFVIEWER = evince$/;"	m
@@ -41,8 +43,10 @@ Sous sous section avec une   quation	latex/clean-latex-template/chap1/eqandfigur
 Sous sous section non num   rot   e	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\label{ssec:sectionandparagraphs}$/;"	b
 Sous-figures	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\end{figure}$/;"	b
 Sous-sous sections et paragraphes	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\subsection{Sous-sous sections et paragraphes}%$/;"	u
+Subtest Section 1	latex/NoTeX/tex/sumary.tex	/^    \\lipsum[1]$/;"	s
 Tableau plus complexe	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\end{table}$/;"	b
 Tableau simple	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\label{sec:subsectiontableau}$/;"	b
+Test Part 1	latex/NoTeX/tex/sumary.tex	/^    \\pagestyle{fancynotes}$/;"	p
 Th   orie	latex/clean-latex-template/appendixA/appendixA.tex	/^\\section{Fonction de transfert}$/;"	u
 Titre de la section	latex/clean-latex-template/chap1/eqandfigures.tex	/^\\section{Titre de la section}%$/;"	s
 Titre du chapitre	latex/clean-latex-template/chap1/chap1.tex	/^}$/;"	c
