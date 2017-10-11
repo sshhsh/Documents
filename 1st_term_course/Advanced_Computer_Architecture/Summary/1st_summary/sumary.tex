@@ -2,8 +2,12 @@
 \usepackage{NotesTeX}
 %\usepackage{lipsum}
 
-\title{{\Huge Summary}\\{\Large{DianNao: A Small-Footprint High-Throughput Accelerator for Ubiquitous Machine-Learning}}}
-\author{Cui Weihao\footnote{\href{https://google.com/}{\textit{Author Website}}}}
+\title{{\Huge Summary}\\{\Large{DianNao: A Small-Footprint
+High-Throughput Accelerator for Ubiquitous Machine-Learning
+\footnote{Tianshi Chen. DianNao: A Small-Footprint
+High-Throughput Accelerator for Ubiquitous Machine-Learning.
+ASPLOS, 2014.}}}}
+\author{Cui Weihao}
     
 \affiliation{SJTU}
 \emailAdd{reallygoodhao@126.com}
@@ -12,8 +16,42 @@
     \flushbottom
     \newpage
     \pagestyle{fancynotes}
-    \part{Brief Introduction 1}
-    
-    \section{Subtest Section}
-    Some notes here.\sn{With some additional sidenotes}
+    \part{Brief Introduction}
+    In the paper, a novel machine-learning accelerator is designed for
+    large-scale CNNs and DNNs, with a special emphasis on the impact
+    of memory on accelerator design, performance and energy.
+    \section{Main Contributions}
+    \begin{itemize}
+        \item A synthesized (place \& route) accelerator design for
+        large-scale CNNs and DNNs, the state-of-the-art
+        machine-learning algorithms.
+        \item The accelerator achieves high throughput in a small area,
+        power and energy footprint.
+        \item The accelerator design focuses on memory behavior, and
+        measurements are not cicumscribed to computational tasks, they
+        factor in the performance and energy impact of memory transfer.
+    \end{itemize}
+    \section{Composition of Accelerator}
+    \begin{itemize}
+        \item Storage: an input buffer for input neurons (NBin), an out
+        put buffer for output neurons (NBout), a third buffer for
+        synaptic weights (SB).
+        \item Computations: Neural Functional Unit.
+        \item Control of Accelerator: Control Logic and  layer code.
+    \end{itemize}
+    %\section{Exprimental Results}
+    \newpage
+    \pagestyle{fancynotes}
+    \part{Details of the Accelerator's design}
+    \section{Neural Functional Unit (NFU)}
+    The spirit of the NFU is to reflect the decomposition of a layer,
+    which is included in CNNs and DNNs, into computational blocks.
+    \begin{itemize}
+        \item Arithmetic operators
+
+        The computations of each layer type can be decomposed in
+        either 2 or 3 stages. for classifer layers: multiplication
+    \end{itemize}
+    \section{Storage: NBin, NBout and SB}
+    \section{Control and code}
 \end{document}
