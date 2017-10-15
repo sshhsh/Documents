@@ -1,7 +1,8 @@
 \contentsline {part}{I\hspace {1em}Brief Introduction}{1}{part.1}
 \contentsline {section}{\numberline {1}Main Contributions}{1}{section.1}
 \contentsline {section}{\numberline {2}Composition of Accelerator}{1}{section.2}
-\contentsline {part}{II\hspace {1em}Details of the Accelerator's design}{2}{part.2}
-\contentsline {section}{\numberline {3}Neural Functional Unit (NFU)}{2}{section.3}
+\contentsline {part}{II\hspace {1em}Details of the Accelerator's design}{1}{part.2}
+\contentsline {section}{\numberline {3}Neural Functional Unit (NFU)}{1}{section.3}
 \contentsline {section}{\numberline {4}Storage: NBin, NBout and SB}{2}{section.4}
-\contentsline {section}{\numberline {5}Control and code}{2}{section.5}
+\contentsline {section}{\numberline {5}Control and code}{3}{section.5}
+\contentsline {part}{III\hspace {1em}Summary}{3}{part.3}
