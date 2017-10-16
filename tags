@@ -1,3 +1,23 @@
+
+        As proposed in the literature sn{D. Larkin, A. Kinane, 
+        The computations of each layer type can be decomposed in
+        V. Muresan, and N. E. O Connor. An Efficient Hardware Architecture for a Neural Network Activation Function Generator. In J. Wang  Z. Yi  J. M. Zurada  B.-L. Lu  and H. Yin  editors  ISNN  2   volume 3973 of Lecture Notes in Computer Science  pages 1319-1327. Springer  2006.	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\end{itemize}$/;"	p
+        We can pipeline all 2 or 3 aforementioned operations in
+        all multiplications, sigmoid. So are the convolutional
+        been performed. From now on, we refer to stage n of the NFU
+        either 2 or 3 stages, e.g. , for classifer layers: 
+        item Arithmetic operators
+        item NFU-3 function implementation
+        item Staggered pipline
+        layers, pooling layers and so on.
+        multiplication of synapses $times$ inputs, additions of
+        pipeline as NFU-n.
+        single layer, but the pipeline must be staggered: the third
+        stage such as sigmoid is only active after all additions have 
+    The spirit of the NFU is to reflect the decomposition of a layer,
+    begin{itemize}
+    section{Neural Functional Unit (NFU)}
+    which is included in CNNs and DNNs, into computational blocks.
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
@@ -5,7 +25,11 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 Abstract	latex/clean-latex-template/frontmatter/abstract_en.tex	/^\\selectlanguage{english}$/;"	c
+Brief Introduction	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\pagestyle{fancynotes}$/;"	p
+Composition of Accelerator	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\end{itemize}$/;"	s
 Conclusion	latex/clean-latex-template/conclusion/conclusion.tex	/^\\begin{document}$/;"	c
+Control and code	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\end{itemize}$/;"	s
+Details of the Accelerator s design}
 Deuxi   me section	latex/clean-latex-template/chap1/codesandlistes.tex	/^\\section{Deuxième section}%$/;"	s
 Deuxi   me section	latex/clean-latex-template/chap2/paragraphanddivers.tex	/^\\section{Deuxième section}%$/;"	s
 Enumerate	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\end{itemize}$/;"	b
@@ -15,14 +39,15 @@ Figure simple	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\subs
 Fonction de Laplace	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{3}$/;"	s
 Fonction de transfert	latex/clean-latex-template/appendixA/appendixA.tex	/^\\blindtext{1}$/;"	s
 H Infiny	latex/clean-latex-template/appendixB/appendixB.tex	/^}$/;"	c
-Introduction	latex/NoTeX/doc/NotesTeX.tex	/^	\\pagestyle{fancynotes}$/;"	p
+Introduction	latex/Reading_Notes/doc/NotesTeX.tex	/^	\\pagestyle{fancynotes}$/;"	p
 Introduction	latex/clean-latex-template/introduction/introduction.tex	/^\\begin{document}$/;"	c
 Itemize	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\subsection{Sous section présentant les listes}$/;"	b
 Keywords	latex/clean-latex-template/frontmatter/abstract_en.tex	/^Insérez ici le résumé en anglais\\\\[2em]$/;"	u
 Les notes de bas de page	latex/clean-latex-template/chap2/paragraphanddivers/divers.tex	/^\\subsection{Sous section présentant divers choses utiles}$/;"	P
 MAINDIRECTORY	latex/clean-latex-template/Makefile	/^MAINDIRECTORY := $(shell pwd)$/;"	m
+Main Contributions	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    of memory on accelerator design, performance and energy.$/;"	s
 Mathematics	latex/clean-latex-template/appendixA/appendixA.tex	/^}$/;"	c
-Motivation	latex/NoTeX/doc/NotesTeX.tex	/^	\\part{Introduction}	$/;"	s
+Motivation	latex/Reading_Notes/doc/NotesTeX.tex	/^	\\part{Introduction}	$/;"	s
 Mots Clefs libres	latex/clean-latex-template/frontmatter/abstract_fr.tex	/^Insérez ici le résumé en français\\\\[2em]$/;"	u
 Nested Lists	latex/clean-latex-template/chap1/codesandlistes/listes.tex	/^\\end{enumerate}$/;"	b
 PDFVIEWER	latex/clean-latex-template/Makefile	/^PDFVIEWER = evince$/;"	m
@@ -43,10 +68,12 @@ Sous sous section avec une   quation	latex/clean-latex-template/chap1/eqandfigur
 Sous sous section non num   rot   e	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\label{ssec:sectionandparagraphs}$/;"	b
 Sous-figures	latex/clean-latex-template/chap1/eqandfigures/figures.tex	/^\\end{figure}$/;"	b
 Sous-sous sections et paragraphes	latex/clean-latex-template/chap2/paragraphanddivers/paragraph.tex	/^\\subsection{Sous-sous sections et paragraphes}%$/;"	u
-Subtest Section 1	latex/NoTeX/tex/sumary.tex	/^    \\lipsum[1]$/;"	s
+Storage  NBin  NBout and SB	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\end{itemize}$/;"	s
+Subtest Section 1	latex/Reading_Notes/tex/sumary.tex	/^    \\lipsum[1]$/;"	s
+Summary	1st_term_course/Advanced_Computer_Architecture/Summary/1st_summary/sumary.tex	/^    \\end{itemize}$/;"	p
 Tableau plus complexe	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\end{table}$/;"	b
 Tableau simple	latex/clean-latex-template/chap2/tableandreferences/tableaux.tex	/^\\label{sec:subsectiontableau}$/;"	b
-Test Part 1	latex/NoTeX/tex/sumary.tex	/^    \\pagestyle{fancynotes}$/;"	p
+Test Part 1	latex/Reading_Notes/tex/sumary.tex	/^    \\pagestyle{fancynotes}$/;"	p
 Th   orie	latex/clean-latex-template/appendixA/appendixA.tex	/^\\section{Fonction de transfert}$/;"	u
 Titre de la section	latex/clean-latex-template/chap1/eqandfigures.tex	/^\\section{Titre de la section}%$/;"	s
 Titre du chapitre	latex/clean-latex-template/chap1/chap1.tex	/^}$/;"	c
