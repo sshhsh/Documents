@@ -1,0 +1,24 @@
+create xml schema collection myNewsSchema
+as
+N'<?xml version="1.0" ?>
+<xs:schema xmlns="NewsSchema"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="NewsSchema">
+    <xs:element name="NewsList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="News" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="unbounded" name="Title" type="xs:string" />
+                            <xs:element minOccurs="1" maxOccurs="unbounded" name="Author" type="xs:string" />
+                            <xs:element minOccurs="1" maxOccurs="unbounded" name="NewsContent" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="NewsID" type="xs:int" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>'
