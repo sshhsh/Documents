@@ -1,0 +1,283 @@
+\documentclass[cyan]{elegantnote}
+
+\author{崔炜皞}
+\email{reallygoodhao@126.com}
+\zhtitle{现代企业容灾备份}
+%\entitle{Elegant \LaTeX{}}
+\version{1.00}
+%\myquote{Victory won\rq t come to us unless we go to it.}
+%\logo{logo.pdf}
+%\cover{cover.pdf}
+
+%green color
+   \definecolor{main1}{RGB}{210,168,75}
+   \definecolor{seco1}{RGB}{9,80,3}
+   \definecolor{thid1}{RGB}{0,175,152}
+%cyan color
+   \definecolor{main2}{RGB}{239,126,30}
+   \definecolor{seco2}{RGB}{0,175,152}
+   \definecolor{thid2}{RGB}{236,74,53}
+%cyan color
+   \definecolor{main3}{RGB}{127,191,51}
+   \definecolor{seco3}{RGB}{0,145,215}
+   \definecolor{thid3}{RGB}{180,27,131}
+
+\usepackage{makecell}
+\usepackage{lipsum}
+
+
+
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{容灾备份简介}
+
+\section{容灾备份定义}
+
+容灾是指利用技术、管理手段以及相关资源确保已有的关键数据、关键数据处理系统和关键业务在
+灾难发生后再确定时间内可以恢复和继续运营的过程。容灾备份防范的灾难包括地址、水灾等自然
+灾难以及火灾、战争、恐怖袭击、网络攻击、设备系统故障、人为破坏等无法预料的突发事件。一
+个完整的灾难备份系统主要由数据备份系统、备份数据处理系统、备份通信网络系统和完善的灾难
+恢复计划所组成。
+
+\section{容灾备份分级}
+
+国际标准SHARE 78将容灾系统定义成七个层次，这七个层次对应的容灾方案在功能、适用范围等方
+面都有所不同。
+\begin{itemize}
+    \item 0级：无异地备份
+
+数据仅在本地进行备份，没有在异地备份数据，未制定灾难恢复计划。这种方式是成本最低的灾难恢
+复解决方案，但不具备真正灾难恢复能力。
+
+在这种容灾方案中，最常用的是备份管理软件加上磁带机，可以是手工加载磁带机或自动加载磁带机。
+它是所有容灾方案的基础，从个人用户到企业级用户都广泛采用了这种方案。其特点是用户投资较少，
+技术实现简单。缺点是一旦本地发生毁灭性灾难，将丢失全部的本地备份数据，业务无法恢复。
+    \item 1级：实现异地备份
+
+将关键数据备份到本地磁带介质上，然后送往异地保存，但异地没有可用的备份中心、备份数据处理
+系统和备份网络通信系统，未制定灾难恢复计划。灾难发生后，使用新的主机，利用异地数据备份介
+质（磁带）将数据恢复起来。
+
+这种方案成本较低，运用本地备份管理软件，可以在本地发生毁灭性灾难后，恢复从异地运送过来的
+备份数据到本地，进行业务恢复。但难以管理，即很难知道什么数据在什么地方，恢复时间长短依赖
+于何时硬件平台能够被提供和准备好。以前被许多进行关键业务生产的大企业所广泛采用，作为异地
+容灾的手段。目前，这一等级方案在许多中小网站和中小企业用户中采用较多。对于要求快速进行业
+务恢复和海量数据恢复的用户，这种方案是不能够被接受的。
+    \item 2级：热备份站点备份
+
+将关键数据进行备份并存放到异地，制定有相应灾难恢复计划，具有热备份能力的站点灾难恢复。一
+旦发生灾难，利用热备份主机系统将数据恢复。它与第1级容灾方案的区别在于异地有一个热备份站
+点，该站点有主机系统，平时利用异地的备份管理软件将运送到异地的数据备份介质（磁带）上的数
+据备份到主机系统。当灾难发生时可以快速接管应用，恢复生产。
+
+由于有了热备中心，用户投资会增加，相应的管理人员要增加。技术实现简单，利用异地的热备份系
+统，可以在本地发生毁灭性灾难后，快速进行业务恢复。但这种容灾方案由于备份介质是采用交通运
+输方式送往异地，异地热备中心保存的数据是上一次备份的数据，可能会有几天甚至几周的数据丢失。
+这对于关键数据的容灾是不能容忍的。
+    \item 3级：在线数据恢复
+
+通过网络将关键数据进行备份并存放至异地，制定有相应灾难恢复计划，有备份中心，并配备部分数
+据处理系统及网络通信系统。该等级方案特点是用电子数据传输取代交通工具传输备份数据，从而提
+高了灾难恢复的速度。利用异地的备份管理软件将通过网络传送到异地的数据备份到主机系统。一旦
+灾难发生，需要的关键数据通过网络可迅速恢复，通过网络切换，关键应用恢复时间可降低到一天或
+小时级。这一等级方案由于备份站点要保持持续运行，对网络的要求较高，因此成本相应有所增加。
+    \item 4级：定时数据备份
+
+第3级容灾方案的基础上，利用备份管理软件自动通过通信网络将部分关键数据定时备份至异地，并
+制定相应的灾难恢复计划。一旦灾难发生，利用备份中心已有资源及异地备份数据恢复关键业务系统
+运行。
+这一等级方案特点是备份数据是采用自动化的备份管理软件备份到异地，异地热备中心保存的数据是
+定时备份的数据，根据备份策略的不同，数据的丢失与恢复时间达到天或小时级。由于对备份管理软
+件设备和网络设备的要求较高，因此投入成本也会增加。但由于该级别备份的特点，业务恢复时间和
+数据的丢失量还不能满足关键行业对关键数据容灾的要求。
+    \item 5级：实时数据备份
+在前面几个级别的基础上使用了硬件的镜像技术和软件的数据复制技术，也就是说，可以实现在应用
+站点与备份站点的数据都被更新。数据在两个站点之间相互镜像，由远程异步提交来同步，因为关键
+应用使用了双重在线存储，所以在灾难发生时，仅仅很小部分的数据被丢失，恢复的时间被降低到了
+分钟级或秒级。由于对存储系统和数据复制软件的要求较高，所需成本也大大增加。
+    
+这一等级的方案由于既能保证不影响当前交易的进行，又能实时复制交易产生的数据到异地，所以这
+一层次的方案是目前应用最广泛的一类，正因为如此，许多厂商都有基于自己产品的容灾解决方案。
+如存储厂商EMC等推出的基于智能存储服务器的数据远程拷贝；系统复制软件提供商VERITAS等提供
+的基于系统软件的数据远程复制；数据库厂商Oracle和Sybase提供的数据库复制方案等。但这些方
+案有一个不足之处就是异地的备份数据是处于备用（Standby）备份状态而不是实时可用的数据，这
+样灾难发生后需要一定时间来进行业务恢复。更为理想的应该是备份站点不仅仅是一个分离的备份系
+统，而且还处于活动状态，能够提供生产应用服务，所以可以提供快速的业务接管，而备份数据则可
+以双向传输，数据的丢失与恢复时间达到分钟甚至秒级。据了解，目前Goldengate公司的全局复制
+软件能够提供这一功能。
+    \item 6级：零数据丢失
+灾难恢复中最昂贵的方式，也是速度最快的恢复方式，它是灾难恢复的最高级别，利用专用的存储网
+络将关键数据同步镜像至备份中心，数据不仅在本地进行确认，而且需要在异地（备份）进行确认。
+因为，数据是镜像地写到两个站点，所以灾难发生时异地容灾系统保留了全部的数据，实现零数据丢
+失。
+     
+这一方案在本地和远程的所有数据被更新的同时，利用了双重在线存储和完全的网络切换能力，不仅
+保证数据的完全一致性，而且存储和网络等环境具备了应用的自动切换能力。一旦发生灾难，备份站
+点不仅有全部的数据，而且应用可以自动接管，实现零数据丢失的备份。通常在这两个系统中的光纤
+设备连接中还提供冗余通道，以备工作通道出现故障时及时接替工作，当然由于对存储系统和存储系
+统专用网络的要求很高，用户的投资巨大。采取这种容灾方式的用户主要是资金实力较为雄厚的大型
+企业和电信级企业。但在实际应用过程中，由于完全同步的方式对生产系统的运行效率会产生很大影
+响，所以适用于生产交易较少或非实时交易的关键数据系统，目前采用该级别容灾方案的用户还很
+少。
+\end{itemize}
+
+\section{容灾备份技术体系}
+
+根据容灾备份不同的应用场景，容灾系统可分为本地数据容灾、本地应用容灾、异地数据容灾和异地
+应用容灾。
+\subsection{本地数据容灾技术}
+\begin{enumerate}
+    \item \emph{网络存储技术}
+
+    传统存储方式为DAS$\left(Direct-Attached\ Storage\right)$方式，即服务器直接与存储
+    设备连接，这种方式已经难以满足扩展性和高可用性的需求，因此网络存储得到迅速发展，包括
+    NAS$\left(Network-Attached\ Storage\right)$,SAN$\left(Storage\ Area\ Network
+    \right)$和基于IP的存储。
+
+    NAS是以网络文件服务器为模型，利用以太网的数据访问技术。拥有异构性强，利用现有LAN网
+    络资源节约预算，易安装和广泛的连接性等优点。不足之处是文件访问速度不能满足在线处理，
+    可扩展性差，数据备份占用LAN带宽等。
+\end{enumerate}
+
+
+
+\section{一张白纸折腾出一个模板}
+
+我以前从未写过类文件，所以，写这个模板的过程必然是折腾的过程，在写模板的过程中，最主
+
+
+\chapter{Elegant Note开服说明}
+
+\section{关于字体}
+
+首先呢？基于本模板追求视觉上的美观的角度，强烈建议使用者安装./fonts/文件夹下的字
+\begin{itemize}
+\itemsep=3pt
+\parskip=0pt
+\item Adobe Garamond Pro
+\item Minion Pro \& Myriad Pro
+\item 方正字体
+\item 华文中宋
+\end{itemize}
+
+并且，如果系统内安装了Adobe字体，建议大家把模板中的黑体，楷体，宋体等字替换成Adobe字体
+
+\begin{note}
+需要特别注意的是，如果笔记需要使用到抄录环境的，请重新修改字体，此版本并未为抄录环境设
+\end{note}
+
+\section{文档说明}
+\subsection{编译方式}
+本模板基于book文类，所以book的选项对于本模板也是有效的。但是，只支持 \XeLaTeX{}，编码为 UTF-8，推荐使用 \TeX{}live编译。作者编写环境为Win8(64bit)+\TeX{}live 2013。
+
+本文特殊选项设置共有2类，分为{\color{main}颜色}和{\color{main}数学字体}。
+
+\subsection{选项设置}
+第一类为{\color{main}颜色}主题设置，内置3组颜色主题，分别为green(default)，cyan，
+
+第二类为{\color{main}数学字体}\verb|\documentclass[mtpro]{elegantnote}|
+
+\begin{table}[htp]
+\centering
+\begin{tabular}{ccccc}
+\toprule	
+	   & green & cyan & blue & 主要使用的环境\\ 
+\midrule
+main & \makecell{{\color{main1}\rule{1cm}{1cm}}}& \makecell{{\color{main2}\rule{1cm}{1cm}}}&\makecell{ {\color{main3}\rule{1cm}{1cm}}}& newdef\\
+
+seco &\makecell{ {\color{seco1}\rule{1cm}{1cm}}}& \makecell{{\color{seco2}\rule{1cm}{1cm}}}&\makecell{ {\color{seco3}\rule{1cm}{1cm}}}&newthem \ newlemma \ newcorol\\
+
+thid &\makecell{ {\color{thid1}\rule{1cm}{1cm}}}& \makecell{{\color{thid2}\rule{1cm}{1cm}}}&\makecell{ {\color{thid3}\rule{1cm}{1cm}}}&newprop\\
+\bottomrule
+\end{tabular}
+\caption{Elegant note 模板中的三套颜色主题\label{tab:color thm}}
+\end{table}
+
+\subsection{数学环境简介}
+在我们这个模板中，定义了三大类环境
+\begin{enumerate}
+\item 定理类环境，包含标题和内容两部分。根据格式的不同分为3种
+\begin{itemize}
+\item {\color{main} newdef} 环境，含有一个可选项，编号以章节为单位；
+\item {\color{main}newthem、newlemma、newcorol} 环境，三者颜色一致，但是定理环境编号以章节为单位，引理和推论为全文编号；
+\item newprop 环境，含有可选项，编号以章节为单位。
+\end{itemize}
+\item 证明类环境，有{\color{main}newproof、note} 环境，特点是，有引导符和引导词，并且证明环境有结束标志。
+\item 示例环境，有{\color{main} example、assumption、conclusion} 环境，三者均以粗体的引导词为开头，字体以灰色，和普通段落格式一致。
+\end{enumerate}
+
+\subsection{可编辑的字段}
+在模板中，可以编辑的字段分别为作者\verb|\author|、\verb|\email|、\verb|\zhtitle|、\verb|\entitle|、\verb|\version|。并且，可以根据自己的喜好把封面水印效果的\verb|cover.pdf|替换掉，以及封面中用到的\verb|logo.pdf|。
+
+\chapter{笔记写作示例}
+
+\section{灵魂不随便出卖，代码也不随便瞎写}
+\lipsum[3]
+考虑如下的随机动态规划问题
+\begin{align*}
+&\max(\min)\quad \mathbb{E}\int_{t_0}^{t_1}f(t,x,u)\,dt\\
+&\quad\mbox{s.t.} \quad dx=g(t,x,u)dt+\sigma(t,x,u)dz\\
+&\quad \hspace{2.em} k(0)=k_0\;\text{given}
+\end{align*}
+
+where $z$ is stochastic process or white noise or wiener process.
+
+\begin{newdef}[Wiener Process]
+If $z$ is wiener process, then for any partition $t_0,t_1,t_2,\ldots$ of time interval, the random variables $z(t_1)-z(t_0),z(t_2)-z(t_1),\ldots$ are independently and normally distributed with zero means and variance $t_1-t_0,t_2-t_1,\ldots$
+\end{newdef}
+
+\lipsum[1-2]
+
+\begin{newthem}[勾股定理]
+勾股定理的数学表达为
+\[a^2+b^2=c^2\]
+其中$a,b$为直角三角形的两条直角边长，$c$为直角三角形斜边长。
+\end{newthem}
+
+\begin{note}
+因为引理，推论的样式和定理的样式一致，仅仅只有计数器的设置不一样，在这里，我们就不写引理和推论的例子了。
+\end{note}
+
+
+\lipsum[4]
+
+\begin{newprop}[最优性原理]
+如果$u^*$在$[s,T]$上为最优解，则$u^*$在$[s,T]$任意子区间都是最优解，假设区间为$[t_0,t_1]$的最优解为$u^*$，则$u(t_0)=u^{*}(t_0)$，即初始条件必须还是在$u^*$上。
+\end{newprop}
+
+\lipsum[5-6]
+\begin{newcorol}
+假设$V(\cdot,\cdot)$为值函数，则跟据最大值原理，有如下推论
+\[
+V(k,z)=\max\Big\{u\big(zf(k)-y\big)+\beta \mathbb{E}V(y,z^\prime)\Big\}
+\]
+\end{newcorol}
+
+\begin{newproof}
+因为 $y^*=\alpha\beta z k^\alpha$，$V(k,z)=\alpha/1-\alpha\beta\ln k_0+1/1-\alpha\beta \ln z_0+\Delta$。
+\begin{align*}
+\text{右边}&=\Big\{u\big(zf(k)-y\big)+\beta \mathbb{E}V(y,z^\prime)\Big\}\\
+&=\ln(zk^\alpha-\alpha\beta zk^\alpha)+\beta\mathbb{E}\Big[\frac{\alpha}{1-\alpha\beta}\ln y+\frac{1}{1-\alpha\beta}\ln z^\prime+\Delta\Big]\\
+&=\ln(1-\alpha\beta)zk^\alpha+\beta\Big\{\mathbb{E}\big[\frac{\alpha}{1-\alpha\beta}\ln \alpha\beta z k^\alpha\big]+\frac{1}{1-\alpha\beta}\mathbb{E}[\ln z^\prime]+\Delta\Big\}
+\end{align*}
+利用$\mathbb{E}[\ln z^\prime]=0$，并将对数展开得
+\begin{align*}
+\text{右边}&=\ln (1-\alpha\beta)+\ln z+\alpha\ln k+\frac{\alpha\beta}{1-\alpha\beta}\big[\ln \alpha\beta+\ln z+\alpha\ln k\big]+\frac{\beta}{1-\alpha\beta}\mu+\beta \Delta\\
+&=\frac{\alpha}{1-\alpha\beta}\ln k+\frac{1}{1-\alpha\beta}\ln z+\Delta
+\end{align*}
+所以$\text{左边}=\text{右边}$，证毕。
+\end{newproof}
+
+
+
+
+\begin{conclusion}
+今天看到一则小幽默，是这样说的：{\color{main} 别人都关心你飞的有多高，只有我关心你的翅膀好不好吃！}说多了都是泪啊！
+\end{conclusion}
+
+最后祝大家\LaTeX{}的学习之路快乐精彩！
+
+\end{document}

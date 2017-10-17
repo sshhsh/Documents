@@ -1,0 +1,1000 @@
+%--------------------------------------------------
+% LePtC 双语彩色笔记模版 - 符号部分
+% filename  = lenote.sty
+% author = LePtC
+% version = 2016.11
+% email = alileptc@gmail.com
+% README on GitHub: https://github.com/LePtC/LeNote
+%--------------------------------------------------
+
+\NeedsTeXFormat{LaTeX2e}[1994/12/01]
+\ProvidesPackage{lenote}
+
+
+
+
+%--------------------------------------------------
+% 定义颜色
+\RequirePackage[dvipsnames]{xcolor} % 有别的包调用过这个包
+% environ 这个包要求 xcolor 带 dvipsnames 选项
+%--------------------------------------------------
+
+
+% 2014.11 更新: 红色弃用, 链接全部紫色, 公式高亮全部橙色, 证明绿色
+\definecolor{r}{RGB}{208,18,27} % InDesign 红色
+\definecolor{g}{RGB}{42,167,56} % InDesign 绿色
+\definecolor{b}{RGB}{12,51,136} % InDesign 蓝色
+
+% \definecolor{o}{RGB}{255,128,0} % 高亮橙
+\definecolor{o}{RGB}{255,102,51} % Matica 橙
+\definecolor{p}{RGB}{128,0,128} % 清华紫
+
+\definecolor{y}{RGB}{100,100,100} % 灰，仿铅笔
+\definecolor{w}{RGB}{255,255,255} % 白，用于反色
+
+
+
+
+
+%--------------------------------------------------
+% LePtC 双语词条
+\RequirePackage{ruby}
+%--------------------------------------------------
+
+
+\renewcommand{\rubysize}{0.7}
+\renewcommand{\rubysep}{-0.1ex}
+% 英文为 Verdana 体
+\newcommand{\eng}[2][]{\ruby{#2}{\textnormal{\fontspec{Verdana}#1}}}
+% 英文注在右侧
+\newcommand{\engr}[2][]{#2\ \textnormal{\small\fontspec{Verdana}#1}}
+
+\setlength\fboxsep{1pt} % 设框的偏移
+\setlength\fboxrule{0.5pt} % 设框宽 \fcolorbox{b}{b}{text}
+
+\newcommand{\entc}[2][]{{\color{b}\!\textnormal{
+  \hei
+  \ruby{{\fcolorbox{b}{w}{{\color{b}#2}}}}
+  {\fontspec{Verdana}#1}
+}}}
+
+% \ruby 默认居中对齐，没有左对齐的选项，用 box 重新计算左对齐的宽度...
+\RequirePackage{calc}
+\newcommand{\ent}[2][]{{\textnormal{
+  \hei
+  \ruby{{\hspace{-3pt}\fcolorbox{b}{w}{{\color{b}#2}}\hspace{-3pt}}}
+  {{\hspace{3pt}\color{b}\makebox[\widthof{#2}+\widthof{#2}/2][l]{\fontspec{Verdana}#1}}
+  }
+}}}
+
+% label, 用于"例","定理","推论"等
+\newcommand{\enl}[1]{{\colorbox{b}{{\hei\color{w}#1}}}}
+
+% 带圈数字序号
+\def\N#1{{\color{b}\scalebox{1.1}{\raisebox{.5pt}{\textcircled{\scalebox{0.8}{\raisebox{-.4pt}{$\mathbf{#1}$}}}}}}}
+\def\n#1{\raisebox{1pt}{\textcircled{\scalebox{0.8}{\raisebox{-.4pt}{$\mathbf{#1}$}}}}}
+
+% 首字母缩写
+\renewcommand{\B}[1]{{\textbf{#1}}}
+
+
+
+
+%--------------------------------------------------
+% 函数名的自动高亮，包括三角函数等，不包括大型运算符类函数
+\RequirePackage{letltxmacro} % 替换原有的 command
+\RequirePackage{xifthen} % \ifthenelse
+%--------------------------------------------------
+
+
+% 函数名称高亮橙色 ---------------
+
+% ln, lg, and lb respectively for the natural, decimal, and binary logarithmic functions
+\LetLtxMacro{\oldlog}{\log}
+\renewcommand{\log}{{\color{o}\,\oldlog\,}}
+\LetLtxMacro{\oldlg}{\lg}
+\renewcommand{\lg}{{\color{o}\,\oldlg\,}}
+\LetLtxMacro{\oldln}{\ln}
+\renewcommand{\ln}{{\color{o}\,\oldln\,}}
+\newcommand{\lb}{{\color{o}\,\mathrm{lb}\,}}
+
+% 自然对数正体，元电荷量斜体
+\newcommand{\e}{{\color{o}\,\mathbf{e}}}
+\renewcommand{\exp}{{\color{o}\mathrm{exp}}}
+
+\LetLtxMacro{\oldsin}{\sin}
+\renewcommand{\sin}{{\color{o}\,\oldsin\,}}
+\LetLtxMacro{\oldsec}{\sec}
+\renewcommand{\sec}{{\color{o}\,\oldsec\,}}
+\LetLtxMacro{\oldcos}{\cos}
+\renewcommand{\cos}{{\color{o}\,\oldcos\,}}
+\LetLtxMacro{\oldcsc}{\csc}
+\renewcommand{\csc}{{\color{o}\,\oldcsc\,}}
+\LetLtxMacro{\oldtan}{\tan}
+\renewcommand{\tan}{{\color{o}\,\oldtan\,}}
+\LetLtxMacro{\oldcot}{\cot}
+\renewcommand{\cot}{{\color{o}\,\oldcot\,}}
+
+\LetLtxMacro{\oldsinh}{\sinh}
+\renewcommand{\sinh}{{\color{o}\,\oldsinh\,}}
+\let\sech\relax % 避免与 physymb 冲突
+\newcommand{\sech}{{\color{o}\,\mathrm{sech}\,}}
+\LetLtxMacro{\oldcosh}{\cosh}
+\renewcommand{\cosh}{{\color{o}\,\oldcosh\,}}
+\let\csch\relax % 避免与 physymb 冲突
+\newcommand{\csch}{{\color{o}\,\mathrm{csch}\,}}
+\LetLtxMacro{\oldtanh}{\tanh}
+\renewcommand{\tanh}{{\color{o}\,\oldtanh\,}}
+\LetLtxMacro{\oldcoth}{\coth}
+\renewcommand{\coth}{{\color{o}\,\oldcoth\,}}
+
+\LetLtxMacro{\oldarcsin}{\arcsin}
+\renewcommand{\arcsin}{{\color{o}\,\oldarcsin\,}}
+\LetLtxMacro{\oldarccos}{\arccos}
+\renewcommand{\arccos}{{\color{o}\,\oldarccos\,}}
+\LetLtxMacro{\oldarctan}{\arctan}
+\renewcommand{\arctan}{{\color{o}\,\oldarctan\,}}
+
+\newcommand{\arcsinh}{{\color{o}\,\mathrm{arcsinh}\,}}
+\newcommand{\arccosh}{{\color{o}\,\mathrm{arccosh}\,}}
+\newcommand{\arctanh}{{\color{o}\,\mathrm{arctanh}\,}}
+
+\newcommand{\sinc}{{\color{o}\,\mathrm{sinc}\,}}
+
+% 函数名要用正体区分
+\DeclareMathOperator{\La}{{\color{o}\mathrm{L}}} % 拉盖尔多项式
+\DeclareMathOperator{\He}{{\color{o}\mathrm{H}}} % 厄米多项式
+\DeclareMathOperator{\Pl}{{\color{o}\mathrm{P}}} % 勒让德多项式
+\DeclareMathOperator{\Yl}{{\color{o}\mathrm{Y}}} % 球谐函数
+\DeclareMathOperator{\Li}{{\color{o}\mathrm{Li}}} % 多对数函数...
+\DeclareMathOperator{\Jb}{{\color{o}\mathrm{J}}} % 贝塞尔函数
+\DeclareMathOperator{\No}{{\color{o}\mathrm{N}}} % 诺依曼函数
+
+
+\let\Re\relax
+\DeclareMathOperator{\Re}{{\color{o}\mathrm{Re}}}
+\let\Im\relax
+\DeclareMathOperator{\Im}{{\color{o}\mathrm{Im}}}
+% 方便下标
+\def\re{_\mathrm{r}}
+\def\im{_\mathrm{i}}
+
+% 定义域和值域
+\DeclareMathOperator{\Do}{{\color{o}\mathcal{D}}}
+\DeclareMathOperator{\Ra}{{\color{o}\mathcal{R}}}
+
+\let\sgn\relax % 避免与 physymb 冲突
+\DeclareMathOperator{\sgn}{{\color{o}\mathrm{sgn}}}
+\let\erf\relax
+\DeclareMathOperator{\erf}{{\color{o}\mathrm{erf}}}
+
+
+% 粗体被注册为群，双线被注册为数域，花体泛函，TODO new: 斜粗体为矩阵
+\RequirePackage{bm}
+
+
+\DeclareMathOperator{\col}{{\color{o}\mathrm{Col}}}
+\DeclareMathOperator{\row}{{\color{o}\mathrm{Row}}}
+\let\ker\relax
+\DeclareMathOperator{\ker}{{\color{o}\mathrm{Ker}}}
+% \let\null\relax % 和 tableofcontents 冲突
+\DeclareMathOperator{\nul}{{\color{o}\mathrm{Null}}}
+% \let\span\relax % 和虚线 \hdashline 冲突
+\DeclareMathOperator{\spa}{{\color{o}\mathrm{Span}}}
+
+\DeclareMathOperator{\aut}{{\color{o}\mathrm{Aut}}}
+\DeclareMathOperator{\inn}{{\color{o}\mathrm{Inn}}}
+
+% 字母形的算符高亮绿色
+\newcommand{\Fo}{{\ensuremath{{\color{o}\mathcal{F}}}}}
+\newcommand{\Lp}{{\ensuremath{{\color{o}\mathcal{L}}}}}
+
+% 与拉氏量密度区分, 不上色
+\newcommand{\Lag}{\mathcal{L}}
+\newcommand{\cL}{\mathcal{L}} % 线性映射算符的空间
+\newcommand{\cP}{\mathcal{P}} % 多项式函数的空间
+
+
+\newcommand{\id}{\,{\color{o}\mathrm{id}}\,}
+
+% TODO 全都换 operator 新方案
+\let\tr\relax
+\DeclareMathOperator{\tr}{{\color{o}\mathrm{tr}}}
+\let\rank\relax
+\DeclareMathOperator{\rank}{{\color{o}\mathrm{rank}}}
+\let\dim\relax
+\DeclareMathOperator{\dim}{{\color{o}\mathrm{dim}}}
+\let\det\relax
+\DeclareMathOperator{\det}{{\color{o}\mathrm{det}}}
+\DeclareMathOperator{\eig}{{\color{o}\mathrm{eig}}}
+\let\diag\relax % 避免与 physymb 冲突
+% \newcommand{\diag}[1][]{\,{\color{o}\mathrm{diag}}
+%   \ifthenelse{\equal{#1}{}}{}{\,\big[\matn[0.9]{#1}}\big]}
+\DeclareMathOperator{\diag}{{\color{o}\mathrm{diag}}}
+\DeclareMathOperator{\cond}{{\color{o}\mathrm{cond}}}
+
+% 列矢量化
+\DeclareMathOperator{\cvec}{{\color{o}\mathrm{vec}}}
+
+% TODO E D Cov 等是用 mathrm 还是 mathsf?
+% \newcommand{\Ep}{{\color{o}\operatorname{E}}}
+\DeclareMathOperator{\Ep}{{\color{o}\mathrm{E}}}
+\newcommand{\Dv}{{\color{o}\operatorname{D}}}
+\newcommand{\Cov}{{\color{o}\operatorname{Cov}}}
+
+% \lim \sum 之类不作处理?
+% 图画符号（\prime，根号）即使是算符也不上色,因为本身不易混淆,上色很麻烦 ...
+\let\mod\relax
+\DeclareMathOperator{\mod}{{\color{o}\mathrm{mod}}}
+\let\gcd\relax
+\DeclareMathOperator{\gcd}{{\color{o}\mathrm{gcd}}}
+\let\lcm\relax
+\DeclareMathOperator{\lcm}{{\color{o}\mathrm{lcm}}}
+
+% 字母大型运算符,加粗?
+% \LetLtxMacro{\oldmax}{\max}
+% % \renewcommand{\max}{\mathop{\boldsymbol\oldmax}}
+% \renewcommand{\max}{{\color{o}\oldmax}}
+% \LetLtxMacro{\oldmin}{\min}
+% % \renewcommand{\min}{\mathop{\boldsymbol\oldmin}}
+% \renewcommand{\min}{{\color{o}\oldmin}}
+
+
+
+
+
+%--------------------------------------------------
+% commath 包的进一步扩展，包括导数、偏导数
+% \RequirePackage{commath} 这个包实现的不好 →_→
+%--------------------------------------------------
+
+
+% 单个字母 ---------------
+
+% 微分算符正体，带指数的用法 \dif[2] TODO: 不要这样用了…
+\newcommand{\dif}[1][]{{\color{o}\,\ensuremath{\mathrm{d}}}^{#1}}
+% TODO: \ensuremath{\,\mathrm{d}#1\@ifnextchar\dif{\,}{}}
+
+% 协变导数
+\newcommand{\Dif}{{\color{o}\mathrm{D}}}
+
+% 偏导数
+\LetLtxMacro{\oldpartial}{\partial}
+\renewcommand{\partial}[1][]{
+  \ifthenelse{\equal{#1}{}}{
+    {{\color{o}\,\oldpartial}}
+  }{
+    {{\color{o}\,\oldpartial}^{\,#1}}
+  }
+}
+
+% 矢量微分算符，可作梯度、散度、旋度、拉普拉斯算符
+\LetLtxMacro{\oldnabla}{\nabla}
+\renewcommand{\nabla}[1][]{{\color{o}\mathbf{\oldnabla}}
+  \ifthenelse{\equal{#1}{}}{}{_{\!{#1}}}
+}
+\newcommand{\nablad}[1][]{\nabla[#1]{\color{o}\cdot}}
+\newcommand{\nablat}[1][]{\nabla[#1]{\color{o}\times}}
+\newcommand{\nablas}[1][]{\nabla[#1]^2}
+
+\newcommand{\squares}{{\color{o}\square}^2}
+
+\LetLtxMacro{\olddelta}{\delta}
+\renewcommand{\delta}{{\color{o}\olddelta}}
+% 克罗内克函数
+\newcommand{\delfun}{{\color{o}\olddelta}}
+\newcommand{\epsfun}{{\color{o}\varepsilon}}
+% 拉普拉斯算符正体，表示相差用斜体（算了还是用▽²表示拉普拉斯算符吧）
+\LetLtxMacro{\oldDelta}{\Delta}
+\renewcommand{\Delta}{{\color{o}\oldDelta}}
+% \renewcommand{\Delta}{{\color{o}\varDelta}}
+
+% 其它默认斜体
+\LetLtxMacro{\oldGamma}{\Gamma}
+\renewcommand{\Gamma}{\varGamma}
+\LetLtxMacro{\oldLambda}{\Lambda}
+\renewcommand{\Lambda}{\varLambda}
+\LetLtxMacro{\oldOmega}{\Omega}
+\renewcommand{\Omega}{\varOmega}
+\LetLtxMacro{\oldTheta}{\Theta}
+\renewcommand{\Theta}{\varTheta}
+\LetLtxMacro{\oldSigma}{\Sigma}
+\renewcommand{\Sigma}{\varSigma}
+\LetLtxMacro{\oldPhi}{\Phi}
+\renewcommand{\Phi}{\varPhi}
+\LetLtxMacro{\oldPsi}{\Psi}
+\renewcommand{\Psi}{\varPsi}
+\LetLtxMacro{\oldPi}{\Pi}
+\renewcommand{\Pi}{\varPi}
+
+% 克里斯托费尔符号
+\newcommand{\Chris}{{\color{o}\oldGamma}}
+% 黎曼曲率张量
+\newcommand{\Rie}[4]{{\color{o}R}_{#1#2#3}{}^{#4}}
+
+
+% TODO: \mathcal 表示范畴或者描述渐进行为的大O记号，\mathfrak表示李群对应的李代数  \mathfrak{g}, \mathfrak{h}
+
+% 大小O记号
+\newcommand{\bigO}{{\color{o}\mathsf{O}}}
+\newcommand{\smallo}{{\color{o}\mathsf{o}}}
+
+% 排列组合, 我习惯 \Choose \Arrange , 也有叫 Combination Permutation
+\newcommand{\Cho}[2]{{\color{o}\mathrm{C}}_{#1}^{#2} }
+% \newcommand{\Arr}[2]{\scalebox{0.7}[1]{\color{o}$\mathsf{A}$}_{#1}^{#2}\,}
+\newcommand{\Arr}[2]{{\color{o}\mathrm{A}}_{#1}^{#2} }
+
+% 格式微调
+\LetLtxMacro{\oldexists}{\exists}
+\renewcommand{\exists}{\oldexists\,}
+\LetLtxMacro{\oldforall}{\forall}
+\renewcommand{\forall}{\oldforall\,}
+\LetLtxMacro{\oldmapsto}{\mapsto}
+\renewcommand{\mapsto}{\,\oldmapsto\,}
+
+% 常微分分式 ---------------
+
+\newcommand{\od}[3][]{\frac{\dif[#1] #2}{\dif
+  \ifthenelse{\equal{#1}{}}{#3}{{#3}^{#1}}
+}}
+% \left. \right| 不好看
+% \mathchoice: display, text, script and scriptscript
+\newcommand{\odat}[4][]{ \mathchoice
+	{\od[#1]{#2}{#3}\Big|_{#4}}
+	{\od[#1]{#2}{#3}\big|_{#4}}
+	{\od[#1]{#2}{#3}|_{#4}}
+	{\od[#1]{#2}{#3}|_{#4}}
+}
+
+% 偏微分分式  ---------------
+
+% physymb 还提供了 pdd, pddd… 以简化高阶导
+\newcommand{\pd}[3][]{\frac{\partial[#1] #2}{\partial
+  \ifthenelse{\equal{#1}{}}{#3}{{#3}^{#1}}
+}}
+\newcommand{\pdat}[4][]{ \mathchoice
+	{\Big(\pd[#1]{#2}{#3}\Big)_{#4}}
+	{\big(\pd[#1]{#2}{#3}\big)_{#4}}
+	{(\pd[#1]{#2}{#3})_{#4}}
+	{(\pd[#1]{#2}{#3})_{#4}}
+}
+\newcommand{\md}[6]{\frac{\partial[#2] #1}{\partial{#3{}^{#4}}\partial{#5{}^{#6}}}}
+\newcommand{\mdat}[7]{ \mathchoice
+	{\left(\dmd{#1}{#2}{#3}{#4}{#5}{#6}\right)_{#7}}
+	{(\tmd{#1}{#2}{#3}{#4}{#5}{#6})_{#7}}
+	{(\md{#1}{#2}{#3}{#4}{#5}{#6})_{#7}}
+	{(\md{#1}{#2}{#3}{#4}{#5}{#6})_{#7}}
+}
+
+
+
+%--------------------------------------------------
+% esvect 包的进一步扩展，包括矢量、矢量导数、双矢量
+\RequirePackage[b]{esvect} %（esvect 能不能出鱼叉型的 vec 啊 ...）
+% \RequirePackage{harpoon}
+%--------------------------------------------------
+
+
+% 手写风格的矢量记号  ---------------
+
+% \RequirePackage{accents} % 和 hyperref 冲突！
+\newcommand{\tightoverset}[2]{
+	\mathop{#2}\limits^{\vbox to -.5ex{\kern-0.8ex\hbox{$#1$}\vss}}}
+
+% 矢量与导数  ---------------
+
+\renewcommand{\vec}[1]{\vv{#1}}
+% \renewcommand{\vec}[1]{
+	% \ifthenelse{\equal{#1}{i}}{\vv{\imath}}{
+		% \ifthenelse{\equal{#1}{j}}{\vv{\jmath}}{
+			% \vv{#1}
+		% }
+	% }
+% }
+% \renewcommand{\vec}[1]{\overrightharp{#1}}
+\newcommand{\vecd}[1]{\dot{\vec{#1}}}
+\newcommand{\vecdd}[1]{\ddot{\vec{#1}}}
+
+% 方便单位矢量
+\newcommand{\ve}[1]{\,{\color{b}\vec{e_{#1}}}}
+\newcommand{\veb}[1]{\,{\color{b}\bm{e}_{#1}}} % 矩阵中用粗体表示
+\newcommand{\vebco}[1]{\,{\color{b}\bm{e}\co[#1]}}
+\newcommand{\vg}[1]{\,{\color{b}\vec{g_{#1}}}}
+% 导数
+\newcommand{\ved}[1]{\dot{\ve{#1}}}
+\newcommand{\vedd}[1]{\ddot{\ve{#1}}}
+% 对偶空间基矢 up low
+\newcommand{\vel}[1]{\,{\color{b}\bm{e}_{#1}}} % 同 veb, 历史遗留…
+\newcommand{\veu}[1]{\,{\color{b}\bm{e}^{#1}}}
+\newcommand{\vgl}[1]{\,{\color{b}\bm{g}_{#1}}}
+\newcommand{\vgu}[1]{\,{\color{b}\bm{g}^{#1}}}
+
+% 左矢量
+\newcommand{\lvec}[1]{\overset{\rotatebox[origin=c]{180}{\raisebox{-0.7pt}{$\fldr$}}}{#1}}
+\newcommand{\lrvec}[1]{\overset{\rotatebox[origin=c]{180}{$\fldr$}\hspace{-3pt}\raisebox{-1.6pt}{$\fldr$}}{#1}} % 在 \lrvec{\partial^\mu} 上效果很好...
+
+% 发明一种新的记号区分对t求导和对s求导（待议） ---------------
+
+% \newcommand{\vecp}[1]{\accentset{\prime}{\vv{#1}}}
+% \newcommand{\vecpp}[1]{\accentset{\prime\prime}{\vv{#1}}}
+% \newcommand{\ap}[1]{\accentset{\prime}{#1}}
+
+% 双矢量  ---------------
+
+\newcommand{\vvec}[1]{\raisebox{1pt}{\ensuremath{\overset{ }{\tightoverset{\fldr\joinrel\fldr}{#1}}}}}
+\newcommand{\vvecd}[1]{\dot{\vvec{#1}}}
+\newcommand{\vvecdd}[1]{\ddot{\vvec{#1}}}
+
+% 三阶张量  ---------------
+
+\newcommand{\vvvec}[1]{\overset{ }{\tightoverset{\fldr\joinrel\fldr\joinrel\fldr}{#1}}}
+\newcommand{\vvvecd}[1]{\dot{\vvvec{#1}}}
+\newcommand{\vvvecdd}[1]{\ddot{\vvvec{#1}}}
+
+
+
+%--------------------------------------------------
+% 方便矩阵，包括方括号矩阵、行列式
+% 圆括号p，方括号b，花括号B，单竖v，双竖V
+\RequirePackage{arydshln} % ,leftidx,mathtools矩阵中画虚线…
+% \setlength{\dashlinedash}{.4pt}
+% \setlength{\dashlinegap}{.8pt}
+\RequirePackage{mathdots} % \iddots
+%--------------------------------------------------
+
+
+% 常用：单列表
+
+% \newcommand{\tab}[1]{\begin{tabular}{l}%
+%   #1%
+%   \end{tabular}%
+% }
+\newcommand{\tab}[2][c]{%
+  \begin{tabular}[c]{@{}#1@{}}#2\end{tabular}}
+
+% 常用：右侧列表
+
+\newcommand{\tabr}[3][0.5]{
+\begin{tabular}{lr}%
+\hspace{-8pt}
+\begin{minipage}{#1\textwidth}
+{#2}
+\end{minipage}
+&{\begin{minipage}{{\textwidth-#1\textwidth}}
+{#3}
+\end{minipage}}
+\end{tabular}%
+}
+
+% 一个 \enl 下列举多条内容
+
+\newcommand{\enlr}[2]{
+\enl{#1}
+\vspace{-17pt}
+
+{\setlength{\parindent}{29pt}
+
+#2
+}}
+
+
+
+
+% 默认矩阵还是方括号好看 ---------------
+
+% 自定义缩放 \mat[.7]{x\\y\\z}
+\newcommand{\mat}[2][1.0]{\scalebox{#1}{
+	\renewcommand{\arraystretch}{.8}
+	\hspace{-10pt}
+	\ensuremath{\begin{bmatrix}#2\end{bmatrix}}
+	\hspace{-8pt}
+}}
+\newcommand{\matp}[2][1.0]{\scalebox{#1}{
+	\renewcommand{\arraystretch}{.8}
+	\hspace{-10pt}
+	\ensuremath{\begin{pmatrix}#2\end{pmatrix}}
+	\hspace{-8pt}
+}}
+
+% 列虚线, 例 ccc:c (行虚线自己加 \hdashline[2pt/2pt] )
+\newcommand{\matdash}[3][1.0]{\scalebox{#1}{\ensuremath{\left[
+\begin{array}{#2}
+#3
+\end{array}
+\right]}}}
+
+% 行列式 ---------------
+
+\newcommand{\matd}[2][1.0]{\scalebox{#1}{
+	\renewcommand{\arraystretch}{.8}
+	\hspace{-10pt}
+	\ensuremath{\begin{vmatrix}\,\,#2\,\,\end{vmatrix}}
+	\hspace{-8pt}
+}}
+
+% nothing ---------------
+
+\newcommand{\matn}[2][1.0]{\scalebox{#1}{
+	\renewcommand{\arraystretch}{.8}
+	\hspace{-10pt}
+	\ensuremath{\begin{matrix}#2\end{matrix}}
+	\hspace{-8pt}
+}}
+
+\newcommand{\mats}[2][1.0]{\scalebox{#1}{
+	\renewcommand{\arraystretch}{.8}
+	\hspace{-10pt}
+	\ensuremath{\begin{smallmatrix}#2\end{smallmatrix}}
+	\hspace{-8pt}
+}}
+
+% 带线矩阵 ---------------
+% 用法 {cc:cc} \hdashline[2pt/2pt]
+\newcommand{\mata}[3][1.0]{\scalebox{#1}{
+  \renewcommand{\arraystretch}{.8}
+  \ensuremath{\left[\begin{array}{#2}
+  #3
+  \end{array}\right]}
+}}
+
+% 左花括号
+\newcommand{\leftB}[2][1]{
+	\ifthenelse{\equal{#1}{1}}{\{}{}
+	\ifthenelse{\equal{#1}{2}}{\Bigl\{}{}
+	\ifthenelse{\equal{#1}{3}}{\Biggl\{}{}
+	\ifthenelse{\equal{#1}{4}}{\left\{}{}
+	\,#2
+	\ifthenelse{\equal{#1}{4}}{\right.}{}
+}
+% http://tex.stackexchange.com/questions/45001/how-do-i-left-align-entries-in-a-matrix-with-beginmatrix
+
+% 群论,杨图 ---------------
+\RequirePackage{ytableau}
+
+% 杨图: \ynd{2+2,1+2,2,1}
+\newcommand{\ynd}[2][0.6]{\scalebox{#1}{
+  \ydiagram{#2}
+}}
+% 杨盘: \yng[0.5]{a&b\\c}
+\newcommand{\yng}[2][0.6]{\scalebox{#1}{
+  \begin{ytableau}
+  #2
+  \end{ytableau}
+}}
+
+
+
+%--------------------------------------------------
+% 方便贴图，包括并排插图、右侧贴图
+\RequirePackage{graphicx}
+\RequirePackage{float}
+\RequirePackage{stfloats}
+%--------------------------------------------------
+
+
+
+% 普通插图 ---------------
+
+% \nn[相对宽度]{图片文件名}
+\newcommand{\figin}[2][0.99]{
+  \includegraphics[width=#1\textwidth]{#2}
+}
+\newcommand{\figint}[2][0.99]{
+	\raisebox{-\totalheight+\baselineskip+20pt}{\includegraphics[width=#1\textwidth]{#2}}
+}
+\newcommand{\fig}[2][0.99]{
+	\begin{figure}[!htb]\centering
+		\figin[#1]{#2}
+	\end{figure}
+}
+
+% 并排插图 ---------------
+
+\newcommand{\figg}[6]{
+	\begin{figure}[!htb]\centering
+		\begin{subfigure}[!htb]{#2\textwidth}\vspace{#3 pt}
+			\includegraphics[width=\textwidth]{#1}
+		\end{subfigure}
+		\begin{subfigure}[!htb]{#5\textwidth}\vspace{#6 pt}
+			\includegraphics[width=\textwidth]{#4}
+		\end{subfigure}
+	\end{figure}
+}
+\newcommand{\figgg}[9]{
+  \begin{figure}[!htb]\centering
+    \begin{subfigure}[!htb]{#2\textwidth}\vspace{#3 pt}
+      \includegraphics[width=\textwidth]{#1}
+    \end{subfigure}
+    \begin{subfigure}[!htb]{#5\textwidth}\vspace{#6 pt}
+      \includegraphics[width=\textwidth]{#4}
+    \end{subfigure}
+    \begin{subfigure}[!htb]{#8\textwidth}\vspace{#9 pt}
+      \includegraphics[width=\textwidth]{#7}
+    \end{subfigure}
+  \end{figure}
+}
+\newcommand{\figggr}[9]{
+	\begin{figure}[!htb]\raggedleft
+		\begin{subfigure}[!htb]{#2\textwidth}\vspace{#3 pt}
+			\includegraphics[width=\textwidth]{#1}
+		\end{subfigure}
+		\begin{subfigure}[!htb]{#5\textwidth}\vspace{#6 pt}
+			\includegraphics[width=\textwidth]{#4}
+		\end{subfigure}
+		\begin{subfigure}[!htb]{#8\textwidth}\vspace{#9 pt}
+			\includegraphics[width=\textwidth]{#7}
+		\end{subfigure}
+	\end{figure}
+}
+
+% \RequirePackage{wrapfig} 放弃，文字环绕各种乱跑
+% 手动用表格实现混排 ---------------
+
+\newcommand{\figr}[3]{
+	{\setlength{\tabcolsep}{2pt}
+	\begin{tabular}{@{}p{{\textwidth-#2\textwidth}}p{#2\textwidth}@{}}
+	\vspace{-14 pt}
+		{#3}
+		&{\raisebox{-\totalheight+\baselineskip}{\includegraphics[width=#2\textwidth]{#1}}}
+	\end{tabular}}
+}
+\newcommand{\figt}[2][0.99]{
+\raisebox{-.5\height}{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+%--------------------------------------------------
+% 方便贴源代码
+\RequirePackage{listings}
+%--------------------------------------------------
+
+
+% \newcommand{\code}[1]{{\fontspec{Consolas}%
+% \begin{lstlisting}[language={[LaTeX]TeX}] %
+	% #1%
+% \end{lstlisting}%
+% }}
+
+% \newcommand{\codev}[1]{{\colorbox{y}{\color{white}\verb|#1|}}}
+\newcommand{\code}[1]{\colorbox{y}{\lstinline[basicstyle=\ttfamily\color{w}]|#1|}}
+
+\newcommand{\file}[1]{{\fcolorbox{y}{w}{\ttfamily{#1}}}}
+
+
+
+%--------------------------------------------------
+% LePtC 彩色条目
+% \RequirePackage{titlesec}
+%--------------------------------------------------
+
+
+% 其它环境 ---------------
+
+% 灰色代表注释笔记
+% \newcommand{\com}[1]{{\color{y}(#1)}}
+\newcommand{\com}[1]{
+\ifmmode{{\color{y}{#1}}}
+\else{{\color{y}(#1)}}
+\fi}
+% \newcommand{\coms}[1]{{\color{y}%
+%   $\left(\tab{#1}\right)$%
+% }}
+\newcommand{\coms}[1]{{\color{y}#1}}
+
+% 方括号代表证明
+\newcommand{\prvs}[1]{{\color{g}{#1}}}
+\newcommand{\prv}[1]{
+\ifmmode{{\color{g}{\lceil\left. #1 \right.\rfloor}}}
+\else{{\color{g}{\!$\lceil$\! #1 \!$\rfloor$\!}}}
+\fi}
+% \left[ \right]? \left| \right|? \lceil \rfloor? 还是啥都不用省心...
+% \newcommand{\prvs}[1]{{\color{g}%
+	% $\left|\tab{#1}\right|$%
+% }}
+\newcommand{\prveq}[1]{% {\color{g}{\eq{#1}}}}
+{\color{g}{$\lceil\left. #1 \right.\rfloor$}}}
+% \newcommand{\prveqd}[1]{{\color{g}{ \eqd{#1}}}}
+% {{\color{g}{ \eqd{\Big\lceil\left. #1 \right.\Big\rfloor}}}}
+% \newcommand{\prveqa}[1]{{\color{g}{\eqa{#1}}}}
+
+% 红色尖括号代表链接
+% \newcommand{\link}[2][]{{\color{p}{$\langle$#1$-$\nameref{#2}$\rangle$}}}
+% 未整合前先用这个
+\newcommand{\link}[2][]{{\color{p}{$\langle$#1 #2$\rangle$}}}
+
+
+
+%--------------------------------------------------
+% 补充特殊格式
+% （物理单位、函数正体，变量、粒子符号斜体）
+%--------------------------------------------------
+
+% 对于很长的公式，用括号配对更明确，替代 $$
+\newcommand{\eq}[1]{$#1$} % 和中文混排需保证每个 \eq 前有个空格...
+\newcommand{\eqd}[1]{$\displaystyle #1$}
+\newcommand{\eqa}[1]{$\begin{aligned}#1\end{aligned}$}
+% \newcommand{\eqa}[1]{$\begin{align*}#1\end{align*}$}
+
+\newcommand{\eqn}[2][]{\vspace{-8pt}\begin{equation}\label{#1} #2\end{equation}}
+\newcommand{\eqna}[2][]{\eqn{\begin{aligned}\label{#1} #2\end{aligned}}}
+
+% damn bar...
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\tld}[1]{\widetilde{#1}}
+
+% 物理单位高亮紫色 ---------------
+
+% 虚数单位正体
+% \RequirePackage{bbm} % Mathematica 狂人可设 e i 双线体 \mathbbm{i}
+\newcommand{\ii}{\,{\color{b}\mathbf{i}}\,}
+\newcommand{\jj}{\,{\color{b}\mathbf{j}}\,}
+\newcommand{\kk}{\,{\color{b}\mathbf{k}}\,}
+\newcommand{\lli}{\,{\color{b}\mathbf{l}}\,}
+
+% \RequirePackage{siunitx} % 物理单位紫色，用法\SI{134.976}{MeV}
+% 改用下面这种方案了
+\newcommand{\uni}[1]{{\ensuremath{\color{b}\ \mathrm{#1}}}}
+
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\preceq}{\preccurlyeq}
+\renewcommand{\succeq}{\succcurlyeq}
+
+% spacing ---------------
+
+% TODO: 改不了字体?
+\renewcommand{\to}{{\color{g}\ensuremath{\,\rightarrow\ }}}
+% \renewcommand{\to}{{\ \color{g}\scalebox{1.5}{$\fldr$}\ }}
+
+% \newcommand{\onto}[2][]{{\color{g}\,\ensuremath{\xrightarrow[#1]{#2}}\,}}
+
+\LetLtxMacro{\oldRightarrow}{\Rightarrow}
+\renewcommand{\Rightarrow}{{\ensuremath{\,\color{g}\oldRightarrow\,}}}
+\LetLtxMacro{\oldLeftarrow}{\Leftarrow}
+\renewcommand{\Leftarrow}{{\ensuremath{\,\color{g}\oldLeftarrow\,}}}
+
+\LetLtxMacro{\oldLeftrightarrow}{\Leftrightarrow}
+\renewcommand{\Leftrightarrow}{{\ensuremath{\,\color{g}\oldLeftrightarrow\,}}}
+\LetLtxMacro{\oldleftrightarrow}{\leftrightarrow}
+\renewcommand{\leftrightarrow}{{\ensuremath{\,\color{g}\oldleftrightarrow\,}}}
+
+% 充要 necessary and sufficient
+\newcommand{\ns}{\ifmmode{\,}\fi{\color{g}\ensuremath{\Leftrightarrow}}\,}
+% TODO: 怎么只改箭头类字符的字体?
+
+
+
+%--------------------------------------------------
+% 补充特殊符号
+\RequirePackage{braket} % 提供量子力学常用
+\RequirePackage{wasysym} % 提供 \apprge \apprle
+\RequirePackage{esint} % 提供 \varoiint，要 overide 掉 amsmath
+\RequirePackage{extarrows} % 等号上面写东西 \xlongequal[below]{above}
+\RequirePackage{chemarr} % 左右箭头写东西  \xrightleftharpoons[below]{above}
+\RequirePackage{slashed} % 协变导数 \cancel 不行?
+%--------------------------------------------------
+
+% 符号水平移动工具
+\makeatletter
+\newcommand*{\shifttext}[2]{%
+  \settowidth{\@tempdima}{#2}%
+  \makebox[\@tempdima]{\hspace*{#1}#2}%
+}
+\makeatother
+
+% 不用下面这种了
+% \newcommand{\onequal}[1]{\overset{\text{#1}}{=\joinrel=}}
+% \onright 有 \xrightarrow 了
+
+\newcommand{\LePtC}{L\raisebox{3pt}{e}\hspace{1pt}P\raisebox{-1pt}{\scalebox{0.8}{t}}\hspace{1pt}C}
+\newcommand{\LeNote}{L\raisebox{3pt}{e}\hspace{1pt}Note}
+
+% text 中打 $\sim$
+\newcommand{\tsim}{{\raise.17ex\hbox{\!$\mathtt{\sim}$}}}
+\newcommand{\xsim}[2][1.2]{
+  \mathrel{\overset{#2}{\scalebox{#1}[1]{$\sim$}}}
+}
+
+% 空集
+\renewcommand{\emptyset}{\scalebox{1.15}{$\varnothing$}}
+
+% 转置
+\renewcommand{\T}{{{\color{o}\mathsf{T}}}}
+
+% 区分一撇 comma 和求导 slash，会覆盖掉 accent commands
+\newcommand{\co}[1][]{\ensuremath{\mathchoice
+	{^{\raisebox{3pt}{$\,,$}}}
+	{^{\raisebox{3pt}{$\,,$}}}
+	{^{\scalebox{0.8}{\raisebox{3pt}{$,$}}}}
+	{^{\scalebox{0.8}{\raisebox{3pt}{$,$}}}}
+	\ifthenelse{\equal{#1}{}}{}{\kern-1.0ex_{#1}}
+}}
+% \renewcommand{\b}{^{\backprime}}
+
+%\RequirePackage{mhchem} % 化学公式
+\newcommand{\ce}[1]{\ensuremath{\mathrm{#1}}}
+
+\newcommand{\abs}[1]{\left|#1\right|} % 已由 physymb 提供
+\newcommand{\norm}[1]{\left\lVert{#1}\right\rVert}
+
+\newcommand{\E}[1]{\times10^{#1}} % 方便数量级
+
+\newcommand{\con}{{\text{常数}}} % 中文不好使？...
+% \newcommand{\con}{Const.}
+\newcommand{\cc}{\text{c.c.}} % 复共轭
+% \newcommand{\~}{$\sim$} % text 模式用
+
+% 垂直 \perp 平行 \parallel 但这个平行是竖线，我想要斜的
+\newcommand{\para}{{/\mkern-5mu/}}
+
+% 理论力学， ---------------
+
+% 动能
+\newcommand{\Ek}[1][]{E_{\mathrm{k}#1}}
+\newcommand{\Ekco}[1][]{E\co[\mathrm{k}#1]}
+% 合力
+\newcommand{\FR}[1][]{\vec{F}_{\!\!\mathrm{R}#1}}
+% 内力外力
+% \newcommand{\inter}{^{(\mathrm{i})}}
+% \newcommand{\exter}{^{(\mathrm{e})}}
+\newcommand{\inter}{^{\text{内}}}
+\newcommand{\exter}{^{\text{外}}}
+% 有效势
+\newcommand{\Veff}{V_\text{eff}}
+\newcommand{\Eeff}{E_\text{eff}}
+
+% 热学 ---------------
+
+\newcommand{\kB}{k_\mathrm{B}}
+\newcommand{\NA}{N_\mathrm{A}}
+% \newcommand{\Tc}{T_\mathrm{c}} % 单个字母下标不能算文字,不然所有下标都是根据英文来的 ( 如 center of mass )
+
+% 两种求平均不一样!
+\newcommand{\tave}[1]{\overline{#1}}
+\newcommand{\pave}[1]{\braket{#1}}
+\newcommand{\ppave}[1]{\langle\!\braket{#1}\!\rangle}
+
+% 电磁学 ---------------
+
+% \RequirePackage{physymb} % 2015.08 重要新包
+% 2016.11 physymb 作者弃坑了,用以下代替
+% \RequirePackage{physics}
+% \RequirePackage{commath} % 提供 \norm
+% \RequirePackage{mandi} % 提供 Griffiths 的 \rr
+\RequirePackage{calligra}
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+% Griffiths 的相对位矢
+\newcommand{\rr}{{\fontsize{18}{20}{\mathchoice
+  {\shifttext{-2pt}{\ensuremath{\mathcalligra{r}}}}
+  {\shifttext{-2pt}{\ensuremath{\mathcalligra{r}}}}
+  {\scalebox{0.8}{\shifttext{-2pt}{\ensuremath{\mathcalligra{r}}}}}
+  {\scalebox{0.65}{\shifttext{-2pt}{\ensuremath{\mathcalligra{r}}}}}
+}}}
+
+\newcommand{\emf}{\mathscr{E}} % electromotive force
+
+\newcommand{\muB}{\mu_\mathrm{B}} % 玻尔磁子
+
+% 角度，温度 ---------------
+
+\renewcommand{\deg}{
+\ifmmode{^\circ}
+\else{\!\textsuperscript{$\circ$}}
+\fi
+}
+\newcommand{\oA}{\text{\AA}} % angstrom
+
+\newcommand{\oC}{{\ensuremath{\color{b}\,^{\circ}{\mathrm C}\,}}}
+\newcommand{\oF}{{\ensuremath{\color{b}\,^{\circ}{\mathrm F}\,}}}
+\newcommand{\oR}{{\ensuremath{\color{b}\,^{\circ}{\mathrm R}\,}}}
+
+% 光学 ---------------
+
+\newcommand{\Zhe}{{\text{\fontspec{Adobe Fangsong Std}Ж}}}
+
+% \newcommand{\no}{n_\mathrm{o}} % 非寻常光？...
+
+% TODO 左手右手 LR 变正体, 透射反射 TR 不用变?
+
+% 相对论 ---------------
+
+\newcommand{\Mp}{M_\mathrm{P}} % 普朗克单位制
+\newcommand{\lp}{l_\mathrm{P}}
+\newcommand{\tp}{t_\mathrm{P}}
+
+% 量子力学 ---------------
+
+\newcommand{\aB}{a_0} % 玻尔半径
+\newcommand{\RH}{R_\mathrm{H}} % 里德伯常量
+\newcommand{\ladB}{\lambda_{\mathrm{dB}}} % 德布罗意波长
+
+\newcommand{\hatv}[1]{\ensuremath{\hat{\vec{#1}}}}
+\newcommand{\hatvs}[1]{\ensuremath{\hat{\vec{#1}}\raisebox{3pt}{$^2$}}}
+
+\newcommand{\sigmatot}{\sigma_{\mathrm{tot}}}
+
+\newcommand{\vBeff}[1][]{\vec{B}_{\text{eff}#1}}
+\newcommand{\Beff}[1][]{B_{\text{eff}#1}}
+
+
+% 群论 ---------------
+
+% \newcommand{\nors}{\trianglelefteq}
+
+\makeatletter
+\newcommand{\nors}{%
+  \mathrel{\mathpalette\sl@unlhd\relax}%
+}
+
+\newcommand{\sl@unlhd}[2]{%
+  \sbox\z@{$#1\lhd$}%
+  \sbox\tw@{$#1\leqslant$}%
+  \dimen@=\ht\tw@
+  \advance\dimen@-\ht\z@
+  \ifx#1\displaystyle
+    \advance\dimen@ .2pt
+  \else
+    \ifx#1\textstyle
+      \advance\dimen@ .2pt
+    \fi
+  \fi
+  \ooalign{\raisebox{\dimen@}{$\m@th#1\lhd$}\cr$\m@th#1\leqslant$\cr}%
+}
+\makeatother
+
+
+% bar ---------------
+
+\def\dbar{{{\color{o}\mkern5mu \mathchar'26\mkern-12mu \mathrm{d}}}}
+
+\makeatletter
+\newcommand{\lambdabar}{{\mathchoice
+	{\smash@bar\textfont\displaystyle{0.25}{1.2}\lambda}
+	{\smash@bar\textfont\textstyle{0.25}{1.2}\lambda}
+	{\smash@bar\scriptfont\scriptstyle{0.25}{1.2}\lambda}
+	{\smash@bar\scriptscriptfont\scriptscriptstyle{0.25}{1.2}\lambda}
+}}
+\newcommand{\smash@bar}[4]{%
+	\smash{\rlap{\raisebox{-#3\fontdimen5#10}{$\m@th#2\mkern#4mu\mathchar'26$}}}%
+}
+\makeatother
+
+% 子项
+\newcommand{\sub}{\ \raisebox{4pt}{$\llcorner$}\ }
+
+
+%--------------------------------------------------
+% 其它常用包
+
+%--------------------------------------------------
+
+
+% TEMPLATE ---------------
+
+\RequirePackage[xetex,colorlinks=true,unicode,pdfencoding=auto]{hyperref}
+\hypersetup{ allcolors=[rgb]{0.5,0,0.5} }
+
+% \RequirePackage[sort&compress]{natbib} % 参考文献包
+% \setlength{\bibsep}{0pt}
+% \RequirePackage{hypernat}
+
+\RequirePackage{datetime} % 当前时间
+\newcommand{\compiled}{
+\begin{flushright}
+\com{\,Last compiled on {\yyyymmdddate\today} at {\hhmmsstime}\,}
+\end{flushright}
+}
+
+\RequirePackage{ulem} % 删除线 \sout{...}
+\RequirePackage{soul} % 高亮工具 \hl{高亮} \st{删除} \ul{下划线}
+
+% http://tex.stackexchange.com/questions/48706/feynmf-doesnt-produce-feynman-diagram-at-all-in-txc
+% \RequirePackage{feynmp} % 用法：记得给整个文档包上
+% \begin{fmffile}{feynman}
+% \end{fmffile}
+
+
+
+
+\endinput
